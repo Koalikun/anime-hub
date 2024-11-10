@@ -1,0 +1,355 @@
+/* Variables */
+:root {
+    --primary-color: #6366f1;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f3f4f6;
+    --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --modal-bg: #ffffff;
+    --modal-header-bg: #f3f4f6;
+}
+
+/* Tema Terang (Default) */
+:root {
+    --primary-color: #6366f1;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f3f4f6;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --card-bg: #ffffff;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --modal-bg: #ffffff;
+    --modal-header-bg: #f3f4f6;
+    --title-color: #1f2937;
+}
+
+/* Tema Gelap */
+body.dark-theme {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --card-bg: #2d2d2d;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    --modal-bg: #1a1a1a;
+    --modal-header-bg: #2d2d2d;
+    --title-color: #ffffff;
+}
+
+/* Container */
+.trending-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+/* Header */
+.trending-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.trending-header h1 {
+    font-size: 2.5rem;
+    color: var(--title-color);
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+/* Update bagian Grid Layout */
+.anime-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .trending-container {
+        padding: 1rem;
+    }
+
+    .trending-header h1 {
+        font-size: 2rem;
+    }
+
+    /* Ubah grid menjadi 2 kolom untuk mobile */
+    .anime-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    /* Sesuaikan ukuran card untuk mobile */
+    .anime-card {
+        min-width: 0; /* Memastikan card bisa menyusut */
+    }
+
+    /* Sesuaikan ukuran font judul anime */
+    .anime-info h2 {
+        font-size: 0.9rem;
+    }
+
+    /* Sesuaikan ukuran font stats */
+    .anime-stats {
+        font-size: 0.8rem;
+    }
+
+    /* Sesuaikan padding */
+    .anime-info {
+        padding: 0.5rem;
+    }
+
+    /* Sembunyikan beberapa informasi yang tidak terlalu penting di mobile */
+    .anime-stats span:last-child {
+        display: none;
+    }
+
+    /* Sesuaikan filter section */
+    .filters {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .search-input, 
+    .genre-select {
+        width: 100%;
+        min-width: 0;
+        padding: 0.6rem 1rem;
+    }
+}
+
+/* Tambahkan breakpoint untuk layar sangat kecil */
+@media (max-width: 380px) {
+    .anime-grid {
+        gap: 0.5rem;
+    }
+
+    .anime-info h2 {
+        font-size: 0.8rem;
+    }
+
+    .anime-stats {
+        font-size: 0.7rem;
+    }
+}
+
+/* Anime Card */
+.anime-card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.anime-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-shadow), 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.anime-card-image {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+}
+
+.anime-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.anime-card:hover .anime-card-image img {
+    transform: scale(1.05);
+}
+
+/* Overlay */
+.anime-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.anime-card:hover .anime-overlay {
+    opacity: 1;
+}
+
+.anime-score {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+}
+
+.details-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.details-btn:hover {
+    background: #4f46e5;
+}
+
+/* Info Section */
+.anime-info {
+    padding: 1rem;
+    background-color: var(--card-bg);
+}
+
+.anime-info h2 {
+    font-size: 1.1rem;
+    color: var(--title-color);
+    margin: 0.5rem 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.anime-stats {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Loading Animation */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid var(--bg-secondary);
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Error Message */
+.error-message {
+    text-align: center;
+    color: #ef4444;
+    padding: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .trending-container {
+        padding: 1rem;
+    }
+
+    .trending-header h1 {
+        font-size: 2rem;
+    }
+
+    .anime-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 1rem;
+    }
+}
+
+/* Styling untuk Theme Switcher */
+.theme-switcher {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease;
+    z-index: 1000;
+}
+
+.theme-switcher:hover {
+    transform: scale(1.1);
+}
+
+/* Tambahkan transisi smooth untuk perubahan tema */
+* {
+    transition: background-color 0.3s ease, 
+                color 0.3s ease, 
+                border-color 0.3s ease, 
+                box-shadow 0.3s ease;
+}
+
+/* Search input styling */
+.search-input {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--bg-secondary);
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+.search-status {
+    text-align: center;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.no-results {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+/* Dark mode support */
+body.dark-theme .search-input {
+    background-color: var(--bg-secondary);
+    border-color: var(--bg-secondary);
+}
+
+body.dark-theme .search-input:focus {
+    border-color: var(--primary-color);
+}

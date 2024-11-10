@@ -1,0 +1,247 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    border-radius: 1rem;
+    width: 100%;
+    max-width: 900px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideUp 0.3s ease;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--bg-secondary);
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-primary);
+    z-index: 1;
+}
+
+.modal-header {
+    position: relative;
+    padding-top: 56.25%;
+    background-color: var(--bg-secondary);
+}
+
+.modal-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-title-section {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    color: var(--text-primary);
+}
+
+.modal-title-section h2 {
+    color: var(--text-primary);
+}
+
+.modal-stats {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.stat {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 0.3rem 0.8rem;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+}
+
+.modal-body {
+    padding: 2rem;
+    color: var(--text-primary);
+}
+
+.modal-info h3 {
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.modal-info p {
+    color: var(--text-primary);
+}
+
+.modal-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.modal-details h4 {
+    color: var(--text-primary);
+}
+
+.genres-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.genre-tag {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 0.3rem 0.8rem;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+}
+
+.genre-tag:hover {
+    opacity: 0.9;
+}
+
+.info-list {
+    list-style: none;
+    padding: 0;
+}
+
+.info-list li {
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Update TrendingAnime.css dengan styles untuk filters */
+.filters {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.search-input, .genre-select {
+    padding: 0.8rem 1.2rem;
+    border: 1px solid var(--bg-secondary);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    min-width: 200px;
+}
+
+.search-input:focus, .genre-select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* Tambahkan di bagian bawah file */
+@media (max-width: 768px) {
+    .modal-overlay {
+        padding: 10px;
+    }
+
+    .modal-content {
+        max-height: 95vh;
+    }
+
+    .modal-title-section {
+        padding: 1rem;
+    }
+
+    .modal-title-section h2 {
+        font-size: 1.2rem;
+    }
+
+    .modal-stats {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .stat {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.6rem;
+    }
+
+    .modal-body {
+        padding: 1rem;
+    }
+
+    .modal-details {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .genre-tag {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.6rem;
+    }
+}
+
+/* Tema Gelap - ditambahkan ke body.dark-theme di TrendingAnime.css */
+body.dark-theme .modal-content {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+body.dark-theme .modal-header {
+    background-color: var(--bg-secondary);
+}
+
+body.dark-theme .modal-body {
+    color: var(--text-primary);
+}
+
+body.dark-theme .genre-tag {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+body.dark-theme .stat {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+body.dark-theme .modal-close {
+    color: var(--text-primary);
+    background: var(--bg-secondary);
+}
+
+/* Tambahkan hover effect */
+.modal-close:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.genre-tag:hover {
+    opacity: 0.9;
+}
